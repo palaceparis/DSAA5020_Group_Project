@@ -1,0 +1,10 @@
+Tp: 1
+epochs: 200
+batch_size: 16
+runs: 5
+threshold: 0.01
+data_sample_file: "data/processed/mistagcn/data-samples"
+# Output directory
+hydra:
+  run:
+    dir: outputs/FC-LSTM/${now:%Y-%m-%d_%H-%M-%S}
