@@ -1,6 +1,5 @@
-# DSAA5020_Group_Project
+# DSAA5020 Group Project: Carbon Emission Prediction by GNNs
 
-DSAA5020 Group Project: Carbon Emission Prediction by GNNs
 
 # Run
 
