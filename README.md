@@ -13,6 +13,6 @@ This course project aims to predict the daily carbon emissions of 31 Chinese pro
 
 # Methods Reference
 
-AGCRN -> [1] L. Bai, L. Yao, C. Li, X. Wang, and C. Wang, “Adaptive Graph Convolutional Recurrent Network for Traffic Forecasting.” arXiv, Oct. 21, 2020. Accessed: Feb. 16, 2023. [Online]. Available: http://arxiv.org/abs/2007.02842
+**AGCRN** -> [1] L. Bai, L. Yao, C. Li, X. Wang, and C. Wang, “Adaptive Graph Convolutional Recurrent Network for Traffic Forecasting.” arXiv, Oct. 21, 2020. Accessed: Feb. 16, 2023. [Online]. Available: http://arxiv.org/abs/2007.02842
 
-FC-LSTM -> [2] S. Tao, H. Zhang, F. Yang, Y. Wu, and C. Li, “Multiple Information Spatial–Temporal Attention based Graph Convolution Network for traffic prediction,” Applied Soft Computing, vol. 136, p. 110052, Mar. 2023, doi: 10.1016/j.asoc.2023.110052.
+**FC-LSTM** -> [2] S. Tao, H. Zhang, F. Yang, Y. Wu, and C. Li, “Multiple Information Spatial–Temporal Attention based Graph Convolution Network for traffic prediction,” Applied Soft Computing, vol. 136, p. 110052, Mar. 2023, doi: 10.1016/j.asoc.2023.110052.
