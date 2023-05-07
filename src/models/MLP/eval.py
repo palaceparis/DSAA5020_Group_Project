@@ -7,7 +7,8 @@ from math import sqrt
 from typing import Tuple
 import numpy as np
 from sklearn.metrics import mean_squared_error
-from utils import relative_absolute_error
+from sklearn.metrics import mean_absolute_error
+from utils import relative_absolute_error, mean_absolute_percentage_error
 
 
 logger = logging.getLogger(__name__)
@@ -26,7 +27,6 @@ def evaluate_model(
     logger.info("Evaluating model")
     model.eval()
 
-    # logger.info(f"Test Loss: {test_loss.item():.4f}")
     with torch.no_grad():
         test_predictions = model(X_test_tensor)
     test_predictions_np = (
@@ -39,6 +39,8 @@ def evaluate_model(
     test_rmse = 0.0
     test_rae = 0.0
     test_loss = 0.0
+    test_mae = 0.0
+    test_mape = 0.0
 
     for i, (X_batch, y_batch) in enumerate(test_loader):
         X_batch, y_batch = X_batch.to(device), y_batch.to(device)
@@ -52,13 +54,19 @@ def evaluate_model(
         test_rmse += batch_rmse
         batch_rae = relative_absolute_error(y_batch_np, batch_predictions_np)
         test_rae += np.sum(batch_rae)
+        batch_mae = mean_absolute_error(y_batch_np, batch_predictions_np)
+        test_mae += batch_mae
+        batch_mape = mean_absolute_percentage_error(y_batch_np, batch_predictions_np)
+        test_mape += batch_mape
 
     avg_test_rmse = test_rmse / (i + 1)
     avg_test_rae = test_rae / (i + 1)
     avg_test_loss = test_loss / (i + 1)
+    avg_test_mae = test_mae / (i + 1)
+    avg_test_mape = test_mape / (i + 1)
 
     logger.info(
-        f"Average Test Loss: {avg_test_loss:.4f}, Average Test RMSE: {avg_test_rmse:.4f}, Average Test RAE: {avg_test_rae:.4f}"
+        f"Average Test Loss: {avg_test_loss:.4f}, Average Test RMSE: {avg_test_rmse:.4f}, Average Test RAE: {avg_test_rae:.4f}, Average Test MAE: {avg_test_mae:.4f}, Average Test MAPE: {avg_test_mape:.4f}"
     )
 
     return test_predictions_np, y_test_np

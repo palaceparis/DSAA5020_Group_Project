@@ -1,9 +1,9 @@
 # Parameters
 look_back: 10 # day(s)
-target_day: 3 # day(s)
+target_day: 1 # day(s)
 num_epochs: 100
-batch_size: 16
-test_size: 0.2
+batch_size: 64
+test_size: 0.15
 random_seed: 42
 file_path: data/interim/emissionsWithoutHeader.csv # emissions
 model:

@@ -7,6 +7,9 @@ import numpy as np
 from lib.logger import get_logger
 from lib.metrics import All_Metrics
 
+# from torch.utils.tensorboard import SummaryWriter
+# import torchvision
+
 
 class Trainer(object):
     def __init__(
@@ -45,6 +48,9 @@ class Trainer(object):
         # self.logger.info("Argument: %r", args)
         # for arg, value in sorted(vars(args).items()):
         #     self.logger.info("Argument %s: %r", arg, value)
+
+        # # Create a SummaryWriter object for TensorBoard logging
+        # self.writer = SummaryWriter(log_dir=args.log_dir)
 
     def val_epoch(self, epoch, val_dataloader):
         self.model.eval()
@@ -129,6 +135,19 @@ class Trainer(object):
         train_loss_list = []
         val_loss_list = []
         start_time = time.time()
+
+        # # Get a sample batch of data
+        # sample_batch = next(iter(self.train_loader))
+        # sample_data, sample_target = sample_batch
+        # sample_data = sample_data[..., : self.args.input_dim]
+
+        # # Add model graph to TensorBoard
+        # with torch.no_grad():
+        #     sample_output = self.model(
+        #         sample_data, sample_target, teacher_forcing_ratio=0
+        #     )
+        # self.writer.add_graph(self.model, (sample_data, sample_target))
+
         for epoch in range(1, self.args.epochs + 1):
             # epoch_time = time.time()
             train_epoch_loss, train_epoch_rmse = self.train_epoch(epoch)
@@ -220,8 +239,8 @@ class Trainer(object):
             y_pred = torch.cat(y_pred, dim=0)
         else:
             y_pred = scaler.inverse_transform(torch.cat(y_pred, dim=0))
-        # np.save("./{}_true.npy".format(args.dataset), y_true.cpu().numpy())
-        # np.save("./{}_pred.npy".format(args.dataset), y_pred.cpu().numpy())
+        np.save("outputs/AGCRN/{}_true.npy".format(args.dataset), y_true.cpu().numpy())
+        np.save("outputs/AGCRN/{}_pred.npy".format(args.dataset), y_pred.cpu().numpy())
         squared_errors = (y_pred - y_true) ** 2
         mean_squared_errors = squared_errors.mean()
         rmse_man = torch.sqrt(mean_squared_errors)

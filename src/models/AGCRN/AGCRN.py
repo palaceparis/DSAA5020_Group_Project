@@ -42,7 +42,7 @@ class AVWDCRNN(nn.Module):
     def init_hidden(self, batch_size):
         init_states = []
         for i in range(self.num_layers):
-            init_states.append(self.dcrnn_cells[i].init_hidden_state(batch_size))
+            init_states.append(self.dcrnn_cells[i].init_hidden_state(batch_size))  # type: ignore
         return torch.stack(init_states, dim=0)  # (num_layers, B, N, hidden_dim)
 
 
@@ -97,3 +97,104 @@ class AGCRN(nn.Module):
         output = output.permute(0, 1, 3, 2)  # B, T, N, C
 
         return output
+
+
+# # Visualize the model
+# import torch
+# from torchviz import make_dot
+# import argparse
+# import configparser
+# from torch.utils.tensorboard.writer import SummaryWriter
+
+
+# # Parse command-line arguments
+# # parser
+
+# Mode = "Train"
+# DEBUG = "False"
+# DATASET = "CARBON"
+# DEVICE = "cuda:0"
+# MODEL = "AGCRN"
+
+# # get configuration
+# # config_file = './{}_{}.conf'.format(DATASET, MODEL)
+# config_file = "src/models/AGCRN/CARBON.conf"
+# # print('Read configuration file: %s' % (config_file))
+# config = configparser.ConfigParser()
+# config.read(config_file)
+# args = argparse.ArgumentParser(description="arguments")
+# args.add_argument("--dataset", default=DATASET, type=str)
+# args.add_argument("--mode", default=Mode, type=str)
+# args.add_argument("--device", default=DEVICE, type=str, help="indices of GPUs")
+# args.add_argument("--debug", default=DEBUG, type=eval)
+# args.add_argument("--model", default=MODEL, type=str)
+# args.add_argument("--cuda", default=False, type=bool)
+# # data
+# args.add_argument("--val_ratio", default=config["data"]["val_ratio"], type=float)
+# args.add_argument("--test_ratio", default=config["data"]["test_ratio"], type=float)
+# args.add_argument("--lag", default=config["data"]["lag"], type=int)
+# args.add_argument("--horizon", default=config["data"]["horizon"], type=int)
+# args.add_argument("--num_nodes", default=config["data"]["num_nodes"], type=int)
+# args.add_argument("--tod", default=config["data"]["tod"], type=eval)
+# args.add_argument("--normalizer", default=config["data"]["normalizer"], type=str)
+# args.add_argument("--column_wise", default=config["data"]["column_wise"], type=eval)
+# args.add_argument("--default_graph", default=config["data"]["default_graph"], type=eval)
+# # model
+# args.add_argument("--input_dim", default=config["model"]["input_dim"], type=int)
+# args.add_argument("--output_dim", default=config["model"]["output_dim"], type=int)
+# args.add_argument("--embed_dim", default=config["model"]["embed_dim"], type=int)
+# args.add_argument("--rnn_units", default=config["model"]["rnn_units"], type=int)
+# args.add_argument("--num_layers", default=config["model"]["num_layers"], type=int)
+# args.add_argument("--cheb_k", default=config["model"]["cheb_order"], type=int)
+# # train
+# args.add_argument("--loss_func", default=config["train"]["loss_func"], type=str)
+# args.add_argument("--seed", default=config["train"]["seed"], type=int)
+# args.add_argument("--batch_size", default=config["train"]["batch_size"], type=int)
+# args.add_argument("--epochs", default=config["train"]["epochs"], type=int)
+# args.add_argument("--lr_init", default=config["train"]["lr_init"], type=float)
+# args.add_argument("--lr_decay", default=config["train"]["lr_decay"], type=eval)
+# args.add_argument(
+#     "--lr_decay_rate", default=config["train"]["lr_decay_rate"], type=float
+# )
+# args.add_argument("--lr_decay_step", default=config["train"]["lr_decay_step"], type=str)
+# args.add_argument("--early_stop", default=config["train"]["early_stop"], type=eval)
+# args.add_argument(
+#     "--early_stop_patience", default=config["train"]["early_stop_patience"], type=int
+# )
+# args.add_argument("--grad_norm", default=config["train"]["grad_norm"], type=eval)
+# args.add_argument("--max_grad_norm", default=config["train"]["max_grad_norm"], type=int)
+# args.add_argument("--teacher_forcing", default=False, type=bool)
+# # args.add_argument('--tf_decay_steps', default=2000, type=int, help='teacher forcing decay steps')
+# args.add_argument(
+#     "--real_value",
+#     default=config["train"]["real_value"],
+#     type=eval,
+#     help="use real value for loss calculation",
+# )
+# # test
+# args.add_argument("--mae_thresh", default=config["test"]["mae_thresh"], type=eval)
+# args.add_argument("--mape_thresh", default=config["test"]["mape_thresh"], type=float)
+# # log
+# args.add_argument("--log_dir", default="outputs/AGCRN", type=str)
+# args.add_argument("--log_step", default=config["log"]["log_step"], type=int)
+# args.add_argument("--plot", default=config["log"]["plot"], type=eval)
+# args = args.parse_args()
+
+# # Create an instance of your AGCRN model
+# model = AGCRN(args)
+
+# # Create some dummy input
+# x = torch.randn(1, 10, 31, 1)
+# targets = torch.randn(1, 1, 31, 1)
+
+# # Generate a visualization of the forward pass
+# dot = make_dot(model(x, targets), params=dict(model.named_parameters()))
+
+# # Create a SummaryWriter
+# writer = SummaryWriter("logs")
+
+# # Save the graph to the SummaryWriter
+# writer.add_graph(model, (x, targets))
+
+# # Close the SummaryWriter
+# writer.close()
