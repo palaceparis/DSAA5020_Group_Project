@@ -14,6 +14,9 @@ from mxnet.gluon.data.dataloader import DataLoader
 from mxnet.gluon.data.dataset import ArrayDataset
 from mxnet.metric import MAE, RMSE
 
+from sklearn.metrics import mean_absolute_error
+from utils import mean_absolute_percentage_error
+
 logging.basicConfig(level=logging.INFO)
 
 
@@ -86,9 +89,13 @@ def test(net, loader_test, devices, loss_fun, n_test):
 
     test_loss_mean = test_loss_acc / n_test  # mse
     test_rmse = np.sqrt(test_loss_mean)
+    y_test_concat = np.concatenate([np.squeeze(y) for y in y_test_list])
+    y_hat_test_concat = np.concatenate([np.squeeze(y_hat) for y_hat in y_hat_test_list])
+    test_mae = mean_absolute_error(y_test_concat, y_hat_test_concat)
+    test_mape = mean_absolute_percentage_error(y_test_concat, y_hat_test_concat)
     duration = time.time() - start
 
-    return test_rmse, duration, y_test_list, y_hat_test_list
+    return test_rmse, test_mae, test_mape, duration, y_test_list, y_hat_test_list
 
 
 def train_and_evaluate(
@@ -125,10 +132,12 @@ def train_and_evaluate(
         val_mae, val_rmse = validate(net, loader_validate, devices, threshold)
         validate_records.append([e, val_mae, val_rmse])
 
-    test_rmse, test_duration, y_test_list, y_hat_test_list = test(
+    test_rmse, test_mae, test_mape, test_duration, y_test_list, y_hat_test_list = test(
         net, loader_test, devices, loss_fun, n_test
     )
-    logging.info(f"Test RMSE: {test_rmse}, duration: {test_duration}s")
+    logging.info(
+        f"Test RMSE: {test_rmse}, Test MAE: {test_mae}, Test MAPE: {test_mape}, duration: {test_duration}s"
+    )
 
     train_records = np.array(train_records)
     validate_records = np.array(validate_records)

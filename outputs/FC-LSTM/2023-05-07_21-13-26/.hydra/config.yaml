@@ -1,0 +1,6 @@
+Tp: 1
+epochs: 2
+batch_size: 16
+runs: 1
+threshold: 0.01
+data_sample_file: data/processed/mistagcn/data-samples

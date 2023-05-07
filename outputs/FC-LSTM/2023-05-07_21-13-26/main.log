@@ -1,0 +1,2 @@
+[2023-05-07 21:13:29,095][root][INFO] - FS-LSTM, run 1/1, train, Epoch 1/2, train RMSE: 0.7967449504186652, duration: 0.4612903594970703s
+[2023-05-07 21:13:29,385][root][INFO] - FS-LSTM, run 1/1, train, Epoch 2/2, train RMSE: 0.733897158930368, duration: 0.26877784729003906s

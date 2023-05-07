@@ -1,0 +1,6 @@
+[2023-05-07 20:42:28,017][train][INFO] - Training model
+[2023-05-07 20:42:28,554][train][INFO] - Epoch [1/2], Loss: 0.7651, RMSE: 1.0158, RAE: 1.4590
+[2023-05-07 20:42:28,577][train][INFO] - Epoch [2/2], Loss: 0.1955, RMSE: 0.6183, RAE: 0.8693
+[2023-05-07 20:42:28,577][train][INFO] - Average Train Loss: 0.7192, Average Train RMSE: 0.8170, Average Train RAE: 1.1642
+[2023-05-07 20:42:28,704][eval][INFO] - Evaluating model
+[2023-05-07 20:42:28,711][eval][INFO] - Average Test Loss: 0.0720, Average Test RMSE: 0.2683, Average Test RAE: 0.3622, Average Test MAE: 0.2002, Average Test MAPE: 117.3931
