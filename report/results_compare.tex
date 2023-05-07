@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{tabularx}
+\usepackage{caption}
+\begin{document}
+
+\begin{table}
+    \centering
+    \caption{Parameter settings.}
+    \begin{tabularx}{0.6\textwidth}{@{}lX@{}}
+        \hline
+        Parameter/Setting             & Value  \\
+        \hline
+        Tp                            & 1d     \\
+        Tr                            & 10d    \\
+        Loss function                 & L2Loss \\
+        Optimizer                     & adam   \\
+        Percentage of training data   & 70\%   \\
+        Percentage of validation data & 15\%   \\
+        Percentage of test data       & 15\%   \\
+        Epochs                        & 100    \\
+        Number of runs                & 1      \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+
+
+
+\begin{table}[h]
+    \centering
+    \caption{Average performance comparison of different approaches.}
+    \begin{tabular}{l c c c c c}
+        \hline
+        Model          & MAE             & MAPE           & RMSE            \\
+        \hline
+        \textbf{AGCRN} & \textbf{0.0151} & \textbf{2.7\%} & \textbf{0.0263} \\
+        MLP            & 0.0699          & 8.8\%          & 0.1010          \\
+        FC-LSTM        & 0.5447          & 412.7\%        & 0.4984          \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+
+\end{document}

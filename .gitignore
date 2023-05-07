@@ -1,3 +1,8 @@
 .DS_Store
 **/__pycache__/
 
+report/results_compare.aux
+report/results_compare.fdb_latexmk
+report/results_compare.fls
+report/results_compare.log
+report/results_compare.synctex.gz

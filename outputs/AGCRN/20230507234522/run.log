@@ -1,0 +1,48 @@
+2023-05-07 23:45: Experiment log path in: outputs/AGCRN/20230507234522
+2023-05-07 23:45: Train Epoch 1: 0/15 Loss: 0.576700
+2023-05-07 23:45: **********Train Epoch 1: averaged Loss: 0.160485, RMSE: 0.400606, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 1: average Loss: 0.028209
+2023-05-07 23:45: *********************************Current best model saved!
+2023-05-07 23:45: Train Epoch 2: 0/15 Loss: 0.027497
+2023-05-07 23:45: **********Train Epoch 2: averaged Loss: 0.021450, RMSE: 0.146459, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 2: average Loss: 0.019943
+2023-05-07 23:45: *********************************Current best model saved!
+2023-05-07 23:45: Train Epoch 3: 0/15 Loss: 0.017255
+2023-05-07 23:45: **********Train Epoch 3: averaged Loss: 0.014676, RMSE: 0.121146, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 3: average Loss: 0.015057
+2023-05-07 23:45: *********************************Current best model saved!
+2023-05-07 23:45: Train Epoch 4: 0/15 Loss: 0.012726
+2023-05-07 23:45: **********Train Epoch 4: averaged Loss: 0.012850, RMSE: 0.113357, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 4: average Loss: 0.012580
+2023-05-07 23:45: *********************************Current best model saved!
+2023-05-07 23:45: Train Epoch 5: 0/15 Loss: 0.010976
+2023-05-07 23:45: **********Train Epoch 5: averaged Loss: 0.011521, RMSE: 0.107336, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 5: average Loss: 0.013331
+2023-05-07 23:45: Train Epoch 6: 0/15 Loss: 0.013032
+2023-05-07 23:45: **********Train Epoch 6: averaged Loss: 0.010858, RMSE: 0.104200, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 6: average Loss: 0.010580
+2023-05-07 23:45: *********************************Current best model saved!
+2023-05-07 23:45: Train Epoch 7: 0/15 Loss: 0.008490
+2023-05-07 23:45: **********Train Epoch 7: averaged Loss: 0.009618, RMSE: 0.098071, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 7: average Loss: 0.009588
+2023-05-07 23:45: *********************************Current best model saved!
+2023-05-07 23:45: Train Epoch 8: 0/15 Loss: 0.009896
+2023-05-07 23:45: **********Train Epoch 8: averaged Loss: 0.008112, RMSE: 0.090067, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 8: average Loss: 0.008583
+2023-05-07 23:45: *********************************Current best model saved!
+2023-05-07 23:45: Train Epoch 9: 0/15 Loss: 0.008256
+2023-05-07 23:45: **********Train Epoch 9: averaged Loss: 0.006714, RMSE: 0.081941, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 9: average Loss: 0.006885
+2023-05-07 23:45: *********************************Current best model saved!
+2023-05-07 23:45: Train Epoch 10: 0/15 Loss: 0.006383
+2023-05-07 23:45: **********Train Epoch 10: averaged Loss: 0.005633, RMSE: 0.075055, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 10: average Loss: 0.006353
+2023-05-07 23:45: *********************************Current best model saved!
+2023-05-07 23:45: Train Epoch 11: 0/15 Loss: 0.005898
+2023-05-07 23:45: **********Train Epoch 11: averaged Loss: 0.004562, RMSE: 0.067541, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 11: average Loss: 0.004990
+2023-05-07 23:45: *********************************Current best model saved!
+2023-05-07 23:45: Train Epoch 12: 0/15 Loss: 0.003950
+2023-05-07 23:45: **********Train Epoch 12: averaged Loss: 0.003920, RMSE: 0.062608, tf_ratio: 1.000000
+2023-05-07 23:45: **********Val Epoch 12: average Loss: 0.004453
+2023-05-07 23:45: *********************************Current best model saved!
